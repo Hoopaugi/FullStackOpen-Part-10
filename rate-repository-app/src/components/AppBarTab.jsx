@@ -10,7 +10,7 @@ const style = StyleSheet.create({
 const AppBarTab = ({ onPress, label }) => {
   return (
     <Pressable style={style} onPress={() => onPress()}>
-      <Text color='primary'>{label}</Text>
+      <Text fontSize='subheading' fontWeight='bold' style={{color: 'white'}}>{label}</Text>
     </Pressable>
   )
 };
