@@ -15,7 +15,6 @@ const RepositoryList = () => {
   const { repositories, loading } = useRepositories();
 
   if (loading) {
-    console.log('a')
     return null
   }
 
