@@ -13,14 +13,10 @@ const style = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const repositoriesOnPress = () => {
-    console.log('Repositories')
-  }
-
   return (
     <View style={style}>
-      <AppBarTab label="Repositories" onPress={repositoriesOnPress} />
-      <AppBarTab label="Repositories" onPress={repositoriesOnPress} />
+      <AppBarTab label="Repositories" link='/' />
+      <AppBarTab label="Sign In" link='/signin' />
     </View>
   )
 };
