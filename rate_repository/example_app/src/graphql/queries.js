@@ -3,14 +3,21 @@ import { gql } from '@apollo/client';
 import { REPOSITORY_BASE_FIELDS, USER_BASE_FIELDS } from './fragments';
 
 export const GET_REPOSITORIES = gql`
-  query Repositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String) {
-    repositories(orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $searchKeyword) {
+  query Repositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String, $after: String, $first: Int) {
+    repositories(orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $searchKeyword, after: $after, first: $first) {
       edges {
+        cursor
         node {
           ...repositoryBaseFields
           ratingAverage
           reviewCount
         }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
       }
     }
   }
@@ -39,9 +46,15 @@ export const GET_REPOSITORY = gql`
 `;
 
 export const GET_REVIEWS = gql`
-  query Repository($repositoryId: ID!) {
+  query Repository($repositoryId: ID!, $after: String, $first: Int) {
     repository(id: $repositoryId) {
-      reviews {
+      reviews(after: $after, first: $first) {
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          startCursor
+        }
         edges {
           node {
             text

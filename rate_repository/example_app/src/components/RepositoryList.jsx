@@ -23,7 +23,23 @@ const RepositoryList = () => {
 
   const pickerRef = useRef();
 
-  const { repositories } = useRepositories(order, searchKeyword);
+  const orderBy = order === 'latest' ? 'CREATED_AT' : 'RATING_AVERAGE'
+  const orderDirection = order === 'latest' ? 'DESC' : order === 'highest' ? 'DESC' : 'ASC'
+
+
+  const variables = {
+    orderBy,
+    orderDirection,
+    searchKeyword,
+    first: 5
+  }
+
+  const { repositories, fetchMore } = useRepositories(variables);
+
+  const onEndReach = () => {
+    console.log('You have reached the end of the list');
+    fetchMore()
+  };
 
   return (
     <>
@@ -45,7 +61,7 @@ const RepositoryList = () => {
         <Picker.Item label="Highest rated repositories" value="highest" />
         <Picker.Item label="Lowest rated repositories" value="lowest" />
       </Picker>
-      <RepositoryListContainer repositories={repositories} />
+      <RepositoryListContainer repositories={repositories} onEndReach={onEndReach} />
     </>
   )
 };
