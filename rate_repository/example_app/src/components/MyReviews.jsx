@@ -1,5 +1,5 @@
 import useMyReviews from "../hooks/useMyReviews";
-import ReviewListContainer from "./ReviewListContainer";
+import MyReviewListContainer from "./MyReviewListContainer";
 
 const MyReviews = () => {
   const { me, loading } = useMyReviews()
@@ -14,7 +14,7 @@ const MyReviews = () => {
 
   return (
     <>
-      <ReviewListContainer reviews={reviews} />
+      <MyReviewListContainer reviews={reviews} />
     </>
   )
 };

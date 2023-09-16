@@ -9,6 +9,8 @@ import ReviewList from "./ReviewList";
 const Repository = () => {
   const { id } = useParams()
 
+  console.log('id', id)
+
   const { repository, loading } = useRepository(id)
 
   const onPress = () => {
@@ -18,6 +20,8 @@ const Repository = () => {
   if (loading) {
     return null
   }
+
+  console.log('repository', repository)
 
   return (
     <>

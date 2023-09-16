@@ -63,8 +63,10 @@ export const GET_MY_REVIEWS = gql`
       reviews {
         edges {
           node {
+            id
             rating
             repository {
+              id
               fullName
             }
             createdAt
