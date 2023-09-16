@@ -72,7 +72,8 @@ const ReviewItem = ({ review }) => {
     text,
     rating,
     createdAt,
-    user
+    user,
+    repository
   } = review;
 
   return (
@@ -83,7 +84,9 @@ const ReviewItem = ({ review }) => {
         </View>
       </View>
       <View style={styles.rightContainer}>
-        <Text fontSize='subheading' fontWeight='bold' >{user.username}</Text>
+        {
+          user ? <Text fontSize='subheading' fontWeight='bold' >{user.username}</Text> : repository ? <Text fontSize='subheading' fontWeight='bold' >{repository.fullName}</Text> : null
+        }
         <Text>{format(parseISO(createdAt), 'dd.MM.yyyy')}</Text>
         <Text>{text}</Text>
       </View>

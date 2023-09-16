@@ -56,3 +56,22 @@ export const GET_REVIEWS = gql`
     }
   }
 `;
+
+export const GET_MY_REVIEWS = gql`
+  query Me {
+    me {
+      reviews {
+        edges {
+          node {
+            rating
+            repository {
+              fullName
+            }
+            createdAt
+            text
+          }
+        }
+      }
+    }
+  }
+`;
