@@ -4,6 +4,7 @@ import * as Linking from 'expo-linking';
 import useRepository from "../hooks/useRepository";
 import RepositoryItem from "./RepositoryItem";
 import Button from "./Button";
+import ReviewList from "./ReviewList";
 
 const Repository = () => {
   const { id } = useParams()
@@ -22,6 +23,7 @@ const Repository = () => {
     <>
       <RepositoryItem repository={repository} />
       <Button onPress={onPress}>Github</Button>
+      <ReviewList id={id} />
     </>
   )
 };
