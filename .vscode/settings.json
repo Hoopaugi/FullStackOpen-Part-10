@@ -1,6 +1,7 @@
 {
   "eslint.workingDirectories": [
     "rate_repository/app",
-    "rate_repository/server"
+    "rate_repository/server",
+    "rate_repository/example_app"
   ]
 }
